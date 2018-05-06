@@ -1,0 +1,3 @@
+select deviceId, from_timestamp(from_unixtime(unix_timestamp(time, "yyyy-MM-ddTHH:mm:ssSSS")), 'yyyy-MM-dd') as day,
+       max(temperature) as highest_temperature
+from iot_devices_data group by deviceId, day;

@@ -1,0 +1,2 @@
+select deviceId, max(temperature) as highest_temperature
+from iot_devices_data group by deviceid;

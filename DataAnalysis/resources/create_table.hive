@@ -1,0 +1,4 @@
+CREATE EXTERNAL TABLE iot_devices_data (id STRING, deviceId STRING, temperature INT, latitude DOUBLE, longitude DOUBLE, time STRING)
+STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
+WITH SERDEPROPERTIES ("hbase.columns.mapping" = ":key,Entity_Data:deviceId,Entity_Data:temperature#b,Entity_Data:latitude#b,Entity_Data:longitude#b,Entity_Data:time")
+TBLPROPERTIES("hbase.table.name" = "IoT_Devices_Data");

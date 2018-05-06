@@ -1,0 +1,3 @@
+disable 'IoT_Devices_Data'
+drop 'IoT_Devices_Data'
+create 'IoT_Devices_Data', 'Raw_Data', 'Entity_Data'

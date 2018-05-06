@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# ###########################################
+# Ingestion Service Startup/Shutdown Script #
+# ###########################################
+
+JSVC="$(which jsvc)"
+
+if [ -z "${JAVA_HOME}" ]; then
+    echo "JAVA_HOME needs to be set before you run this script."
+fi
+
+DATA_INGESTION_JAR=DataIngestion-assembly-1.0.jar
+
+CURRENT_DIR=$(pwd)
+
+CLASS_PATH="${CURRENT_DIR}/target/scala-2.12/$DATA_INGESTION_JAR"
+CLASS=dataengineering.dataingestion.Ingestion
+
+PID_FILE=${CURRENT_DIR}/target/ingestion.pid
+LOG_OUT_FILE=${CURRENT_DIR}/target/ingestion.out
+LOG_ERR_FILE=${CURRENT_DIR}/target/ingestion.err
+
+service_manager() {
+    $JSVC -debug \
+    -home $JAVA_HOME -cp "$CLASS_PATH" \
+    -outfile "$LOG_OUT_FILE" \
+    -errfile "$LOG_ERR_FILE" \
+    -pidfile "$PID_FILE" \
+    $1 "$CLASS"
+}
+
+case "$1" in
+    start)
+        service_manager
+            ;;
+    stop)
+        service_manager "-stop"
+            ;;
+    restart)
+        if [ -f "$PID_FILE" ]; then
+            service_manager "-stop"
+            service_manager
+        else
+            echo "Service not running, will do nothing."
+            exit 1
+        fi
+            ;;
+    *)
+            echo "Usage: ingestor {start|stop|restart}" >&2
+            exit 3
+            ;;
+esac

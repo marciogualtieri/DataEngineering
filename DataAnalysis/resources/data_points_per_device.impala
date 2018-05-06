@@ -1,0 +1,2 @@
+select deviceId, count(*) as data_points
+from iot_devices_data group by deviceid;
