@@ -129,7 +129,7 @@ Now restart all services. The easiest way is to simply reboot the machine:
 
     $ sudo shutdown -r 0
 
-For my own future reference, [here are the ports used by the services](https://www.cloudera.com/documentation/enterprise/5-2-x/topics/cdh_ig_ports_cdh5.html).
+For my own future reference, here are the [ports used by the services in Cloudera's VM](https://www.cloudera.com/documentation/enterprise/5-2-x/topics/cdh_ig_ports_cdh5.html).
 
 
 ### JSVC:
