@@ -51,7 +51,7 @@ You should get the following output:
         [info] Passed: Total 1, Failed 0, Errors 0, Passed 1
         [success] Total time: 31 s, completed 06-May-2018 18:12:09
 
-***TODO:*** Find a way to test Spark Streaming Kafka, given that [spark-testing-base](https://github.com/holdenk/spark-testing-base) doesn't seem to work with [spark-streaming-kafka](https://spark.apache.org/docs/1.6.3/streaming-kafka-integration.html).
+***TODO:*** Find a way to test the streaming job, given that [spark-testing-base](https://github.com/holdenk/spark-testing-base) doesn't seem to work with [spark-streaming-kafka](https://spark.apache.org/docs/1.6.3/streaming-kafka-integration.html).
 
 ## Installing Dependencies
 
